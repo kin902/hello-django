@@ -16,7 +16,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
 from . import views
 
 urlpatterns = [
@@ -24,6 +23,3 @@ urlpatterns = [
     path('', views.homepage),
     path('about/', views.about),
 ]
-
-
-# TODO https://www.youtube.com/watch?v=qcJZN1pvG6A&list=PL0Zuz27SZ-6NamGNr7dEqzNFEcZ_FAUVX
