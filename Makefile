@@ -9,3 +9,6 @@ shell:
 
 app:
 	cd myproject && python manage.py startapp $(name) && cd ../
+
+freeze:
+	cd myproject && python -m pip freeze > requirements.txt && cd ../
