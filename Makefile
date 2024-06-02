@@ -6,3 +6,6 @@ migrate:
 
 shell:
 	cd myproject && python manage.py shell && cd ../
+
+app:
+	cd myproject && python manage.py startapp $(name) && cd ../
