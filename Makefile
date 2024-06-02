@@ -10,5 +10,8 @@ shell:
 app:
 	cd myproject && python manage.py startapp $(name) && cd ../
 
+static:
+	cd myproject && python manage.py collectstatic && cd ../
+
 freeze:
 	cd myproject && python -m pip freeze > requirements.txt && cd ../
