@@ -2,7 +2,7 @@
 # And add help text after each target name starting with '\#\#'
 
 help: # Show this help.
-	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
+	@grep -h -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "⚡ \033[34m%-30s\033[0m %s\n", $$1, $$2}'
 
 venv: ## 1. Create Virtual Env at current directory. Should run `source .venv/bin/activate` after created Virtual Env.
 	python -m venv .venv
