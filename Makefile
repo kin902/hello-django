@@ -10,26 +10,27 @@ venv: ## 1. Create Virtual Env at current directory. Should run `source .venv/bi
 django: ## 2. Install Django. Note: Should run `source .venv/bin/activate` to load Virtual Env
 	python -m pip install django
 
-project: ## 3. Create project with default name 'myproject'. Note: Should run `source .venv/bin/activate` to load Virtual Env
-	django-admin startproject myproject
+project: ## 3. Create project with default name 'system'. Note: Should run `source .venv/bin/activate` to load Virtual Env
+	django-admin startproject system
+	mv system system_tmp && mv system_tmp/* . && rm -fr system_tmp
 
 superuser: ## 4. Create super user for project
-	cd myproject && python manage.py migrate && python manage.py createsuperuser && cd ../
+	python manage.py migrate && python manage.py createsuperuser
 
 app: ## 5. Create app $(name). Example `make app name=blog`
-	cd myproject && python manage.py startapp $(name) && cd ../
+	python manage.py startapp $(name)
 
 dev: ## 6. Run project
-	cd myproject && python manage.py runserver && cd ../
+	python manage.py runserver
 
 migrate: ## Create DB migration
-	cd myproject && python manage.py makemigrations && python manage.py migrate && cd ../
+	python manage.py makemigrations && python manage.py migrate
 
 shell: ## Python shell
-	cd myproject && python manage.py shell && cd ../
+	python manage.py shell
 
 static: ## Public static file
-	cd myproject && python manage.py collectstatic && cd ../
+	python manage.py collectstatic
 
 freeze: ## Export requirements.txt
-	cd myproject && python -m pip freeze > requirements.txt && cd ../
+	python -m pip freeze > requirements.txt
